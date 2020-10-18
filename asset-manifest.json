@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/VPool/static/css/main.afa0bffe.chunk.css",
+    "main.js": "/VPool/static/js/main.fff3b103.chunk.js",
+    "main.js.map": "/VPool/static/js/main.fff3b103.chunk.js.map",
+    "runtime-main.js": "/VPool/static/js/runtime-main.1b219808.js",
+    "runtime-main.js.map": "/VPool/static/js/runtime-main.1b219808.js.map",
+    "static/css/2.b9729d07.chunk.css": "/VPool/static/css/2.b9729d07.chunk.css",
+    "static/js/2.c5bcd2ec.chunk.js": "/VPool/static/js/2.c5bcd2ec.chunk.js",
+    "static/js/2.c5bcd2ec.chunk.js.map": "/VPool/static/js/2.c5bcd2ec.chunk.js.map",
+    "index.html": "/VPool/index.html",
+    "precache-manifest.ed4414005c1a679068204fb6044e2149.js": "/VPool/precache-manifest.ed4414005c1a679068204fb6044e2149.js",
+    "service-worker.js": "/VPool/service-worker.js",
+    "static/css/2.b9729d07.chunk.css.map": "/VPool/static/css/2.b9729d07.chunk.css.map",
+    "static/css/main.afa0bffe.chunk.css.map": "/VPool/static/css/main.afa0bffe.chunk.css.map",
+    "static/js/2.c5bcd2ec.chunk.js.LICENSE.txt": "/VPool/static/js/2.c5bcd2ec.chunk.js.LICENSE.txt",
+    "static/media/VPool.jpeg": "/VPool/static/media/VPool.60b20574.jpeg",
+    "static/media/VPoolLogo.png": "/VPool/static/media/VPoolLogo.0e498102.png",
+    "static/media/car_red.png": "/VPool/static/media/car_red.f47de7fd.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1b219808.js",
+    "static/css/2.b9729d07.chunk.css",
+    "static/js/2.c5bcd2ec.chunk.js",
+    "static/css/main.afa0bffe.chunk.css",
+    "static/js/main.fff3b103.chunk.js"
+  ]
+}
