@@ -1,7 +1,7 @@
 {
   "name": "mapbox-drivers",
   "version": "0.1.0",
-  "homepage": "https://zouzou135.github.io/VPool/",
+  "homepage": "https://zouzou135.github.io/VPool",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
