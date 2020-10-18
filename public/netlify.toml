@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+/api/* http://192.34.109.55/BlaseExtra/Api/ 200!

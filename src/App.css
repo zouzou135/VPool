@@ -36,3 +36,231 @@
     transform: rotate(360deg);
   }
 }
+
+.marker-btn{
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.rotation{
+  transform: rotate(40deg);
+  -webkit-transform: rotate(40deg);
+}
+
+.dashboard {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  min-height: 500px;
+  border-radius: 10px;
+  background-color: #f8f4f4;
+  position: fixed;
+  overflow: auto;
+  left:100px;
+  top:100px;
+  z-index: 100;
+}
+.bottomLogo{
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  overflow: auto;
+  left:10px;
+  bottom:5px;
+  z-index: 100;
+}
+
+.plus-button{
+  height: 15px;
+  width: 15px;
+  vertical-align: middle;
+  border: 0 none transparent;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.links li {
+  display: block;
+}
+
+.link{
+  display: block;
+  color: #808080;
+  padding: 10px;
+  text-decoration: none;
+}
+ 
+.link.active {
+  background-color: #0c0e0c;
+  color: white;
+  text-decoration: none;
+}
+
+.link:hover:not(.active) {
+  background-color: #555;
+  color: white;
+  text-decoration: none;
+}
+
+.logout-button.active {
+  background-color: #0c0e0c;
+  color: white;
+  text-decoration: none;
+}
+
+.logout-button:hover:not(.active) {
+  background-color: #555;
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar li {
+  display: block;
+}
+
+.sidebar .link-button {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+ 
+.sidebar .link-button.active {
+  background-color: #262c26;
+  color: white;
+}
+
+.sidebar .link-button:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+
+.dashboard .logout-button {
+  display: block;
+  color: grey;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.dashboard .logout-button.active {
+  background-color: #aa2121;
+  color: white;
+}
+
+.dashboard .logout-button:hover:not(.active) {
+  background-color: rgb(202, 16, 16);
+  color: white;
+}
+
+
+.sidebar .logout-button {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+ 
+.sidebar .logout-button.active {
+  background-color: #aa2121;
+  color: white;
+}
+
+.sidebar .logout-button:hover:not(.active) {
+  background-color: rgb(202, 16, 16);
+  color: white;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  padding-top: 60px;
+  height: 1000px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar .link-button {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar .link-button {
+    text-align: center;
+    float: none;
+  }
+}
+
+.loginContainer {
+  width: 330px;
+  height: 600px;
+  position: absolute; /*Can also be `fixed`*/
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  /*Solves a problem in which the content is being cut when the div is smaller than its' wrapper:*/
+  max-width: 100%;
+  max-height: 100%;
+  overflow: auto;
+}
+
+.toCenter{
+  width: 330px;
+  position: relative;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
+
+.border{
+  border-width: 4px;
+  border-color: #197BFF;
+  border-radius: 5px;
+}
+
+/* .nav-pills>li {
+  border-left:6px solid #197BFF;
+}
+
+.nav-pills>.active {
+  border-right: 2px solid #197BFF;
+  border-top: 2px solid #197BFF;
+  border-bottom: 2px solid #197BFF;
+  border-left:none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+} */
+
+.table td {
+  text-align: center;   
+}
+
+.table th {
+  text-align: center;   
+}
+.toCenterPills{
+  display: flex;
+  justify-content: center;
+}
+.toRight{
+  float: right;
+  margin-bottom: 10px;
+}
+

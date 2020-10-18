@@ -1,24 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import history from "./history";
 import './App.css';
+import Dashboard from './components/Dashboard';
+import RegisterDriver from './components/RegisterDriver';
+import RegisterVehicle from './components/RegisterVehicle';
+import Reports from './components/Reports';
+import Login from './components/Login';
+import DriverList from './components/DriverList';
+import VehicleList from './components/VehicleList';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router history={history}>
+        <Switch>
+          <Route exact path="/" component={Dashboard} />
+          <Route exact path="/Login" component={Login} />
+          <Route exact path="/RegisterDriver" render={(props) => <RegisterDriver {...props} />} />
+          <Route exact path="/RegisterVehicle" render={(props) => <RegisterVehicle {...props} />} />
+          <Route exact path="/Reports" component={Reports} />
+          <Route exact path="/DriverList" component={DriverList} />
+          <Route exact path="/VehicleList" component={VehicleList} />
+          {/* <Route key="search" path="/search/:searchTerm" render={props => <Home {...props} />} /> */}
+        </Switch>
+      </Router>
     </div>
   );
 }
