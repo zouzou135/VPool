@@ -51,7 +51,7 @@
 .dashboard {
   margin: 0;
   padding: 0;
-  width: 200px;
+  width: 230px;
   min-height: 500px;
   border-radius: 10px;
   background-color: #f8f4f4;
@@ -61,6 +61,7 @@
   top:100px;
   z-index: 100;
 }
+
 .bottomLogo{
   margin: 0;
   padding: 0;
@@ -262,5 +263,30 @@ div.content {
 .toRight{
   float: right;
   margin-bottom: 10px;
+}
+
+.dot {
+  height: 23px;
+  width: 23px;
+  float: right;
+  background-color: rgb(35, 238, 16);
+  border-radius: 50%;
+}
+
+.locationTable {
+  border-collapse: collapse;
+}
+
+.locationTable, .locationHeader, .locationD {
+  border: 1px solid rgb(173, 167, 167);
+}
+
+.locationD{
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
 }
 

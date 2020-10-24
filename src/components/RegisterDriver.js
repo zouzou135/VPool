@@ -189,7 +189,9 @@ function RegisterDriver(props) {
                 VPOOL</li>
                 <li><Link to="/RegisterDriver" className="active link-button">Driver Settings</Link></li>
                 <li><Link to="/RegisterVehicle" className="link-button">Vehicle Settings</Link></li>
+                <li><Link to="/Settings" className="link-button">Settings</Link></li>
                 <li><Link to="/Reports" className="link-button">Reports</Link></li>
+                <li><Link to="/AssignTrip" className="link-button">Assign Trip</Link></li>
                 <li><Link to="/" className="link-button">Dashboard</Link></li>
                 <li onClick={logout}><Link className="logout-button">Logout</Link></li>
             </div>

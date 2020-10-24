@@ -9,8 +9,12 @@ import Reports from './components/Reports';
 import Login from './components/Login';
 import DriverList from './components/DriverList';
 import VehicleList from './components/VehicleList';
+import AssignTrip from './components/AssignTrip';
+import Settings from './components/Settings';
+import ChooseOnMap from './components/ChooseOnMap';
 
 function App() {
+
 
   return (
     <div>
@@ -23,6 +27,9 @@ function App() {
           <Route exact path="/Reports" component={Reports} />
           <Route exact path="/DriverList" component={DriverList} />
           <Route exact path="/VehicleList" component={VehicleList} />
+          <Route exact path="/AssignTrip" render={(props) => <AssignTrip {...props} />} />
+          <Route exact path="/Settings" component={Settings} />
+          <Route exact path="/ChooseOnMap" render={(props) => <ChooseOnMap {...props} />} />
           {/* <Route key="search" path="/search/:searchTerm" render={props => <Home {...props} />} /> */}
         </Switch>
       </Router>

@@ -30,6 +30,7 @@ function Login() {
                     if (responseJson[0].ROLE === "ASSISTANT") {
                         setIncorrect(false);
                         localStorage.setItem("logged", "true");
+                        localStorage.setItem("timeInterval", "30000");
                         history.push("/");
                         history.go(0);
                     } else {

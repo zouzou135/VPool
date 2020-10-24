@@ -67,7 +67,9 @@ function VehicleList({ history }) {
                 VPOOL</li>
                 <li><Link to="/RegisterDriver" className="link-button">Driver Settings</Link></li>
                 <li><Link to="/RegisterVehicle" className="active link-button">Vehicle Settings</Link></li>
+                <li><Link to="/Settings" className="active link-button">Settings</Link></li>
                 <li><Link to="/Reports" className="link-button">Reports</Link></li>
+                <li><Link to="/AssignTrip" className="link-button">Assign Trip</Link></li>
                 <li><Link to="/" className="link-button">Dashboard</Link></li>
                 <li onClick={logout}><Link className="logout-button">Logout</Link></li>
             </div>

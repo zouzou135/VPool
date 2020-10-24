@@ -3,13 +3,42 @@ import { Link } from "react-router-dom";
 import '../App.css';
 import vpool from '../images/VPoolLogo.png';
 import history from "../history";
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+
 
 function Reports() {
     const [selectedReport, setSelectedReport] = useState(1);
     const [selectedReportName, setSelectedReportName] = useState("Vehicles");
     const [reports, setReports] = useState([]);
+    const [fixedReports, setFixedReports] = useState([]);
     const [fromDate, setFromDate] = useState("");
     const [toDate, setToDate] = useState("");
+
+    const columns = React.useMemo(
+        () => [
+            {
+                columns: [
+                    {
+                        Header: 'Age',
+                        accessor: 'age',
+                    },
+                    {
+                        Header: 'Visits',
+                        accessor: 'visits',
+                    },
+                    {
+                        Header: 'Status',
+                        accessor: 'status',
+                    },
+                    {
+                        Header: 'Profile Progress',
+                        accessor: 'progress',
+                    },
+                ],
+            },
+        ],
+        []
+    )
 
     useEffect(() => {
         if (localStorage.getItem("logged") !== "true") {
@@ -48,6 +77,7 @@ function Reports() {
             .then((responseJson) => {
                 console.log(responseJson);
                 setReports(responseJson);
+                setFixedReports(responseJson);
             }).catch((error) => {
                 console.log(error);
                 alert('Failed to Save.');
@@ -82,6 +112,7 @@ function Reports() {
 
     let rows = [];
     console.log(reports);
+    let excelRows = []
     if (selectedReport === 6) {
         const contents1 = reports.forEach((item, key) => {
             let status = "";
@@ -97,7 +128,7 @@ function Reports() {
                 bgColor = "black"
             } else if (item.status === 1) {
                 status = "ACCEPTED"
-                bgColor = "yellow"
+                bgColor = "#FFCC00"
             } else if (item.status === 2) {
                 status = "STARTED"
                 bgColor = "orange"
@@ -116,7 +147,25 @@ function Reports() {
                     <td>{item.datesc}</td>
                     <td>{item.fromlocation}</td>
                     <td>{item.tolocation}</td>
-                    <td ><span style={{ backgroundColor: bgColor, borderRadius: "3px", color: "white", padding: "3px" }}>{status}</span></td>
+                    <td><span style={{ backgroundColor: bgColor, borderRadius: "3px", color: "white", padding: "3px" }}>{status}</span></td>
+                    <td>{item.Startdate}</td>
+                    <td>{item.enddate}</td>
+                    <td>{item.noteassistant}</td>
+                    <td>{item.notedriver}</td>
+                    <td>{item.KM}</td>
+                    <td>{item.DURATION}</td>
+                    <td>{item.Speed}</td>
+                </tr>
+            );
+            excelRows.push(
+                <tr>
+                    <td>{item.Trucks}</td>
+                    <td>{item.driver}</td>
+                    <td>{type}</td>
+                    <td>{item.datesc}</td>
+                    <td>{item.fromlocation}</td>
+                    <td>{item.tolocation}</td>
+                    <td >{status}</td>
                     <td>{item.Startdate}</td>
                     <td>{item.enddate}</td>
                     <td>{item.noteassistant}</td>
@@ -182,7 +231,12 @@ function Reports() {
 
     let submitFunction = (e) => {
         e.preventDefault();
-        getReport(selectedReport);
+        if (selectedReport !== 6) {
+            getReport(selectedReport);
+        } else {
+            getTripsReport();
+        }
+
     }
 
     let onFromDateChange = (e) => {
@@ -200,6 +254,24 @@ function Reports() {
         history.go(0);
     }
 
+    let statusFilter = (e) => {
+        e.preventDefault();
+        console.log(fixedReports)
+        let tempReport = []
+        if (parseInt(e.target.id) === 4) {
+            setReports(fixedReports)
+        } else {
+            for (var i = 0; i < fixedReports.length; i++) {
+                console.log(fixedReports[i].status, parseInt(e.target.id))
+                if (fixedReports[i].status === parseInt(e.target.id)) {
+                    tempReport.push(fixedReports[i])
+                }
+            }
+            setReports(tempReport)
+        }
+
+    }
+
     return (
         <div className="" >
             <div className="sidebar">
@@ -208,7 +280,9 @@ function Reports() {
                 VPOOL</li>
                 <li><Link to="/RegisterDriver" className="link-button">Driver Settings</Link></li>
                 <li><Link to="/RegisterVehicle" className="link-button">Vehicle Settings</Link></li>
+                <li><Link to="/Settings" className="link-button">Settings</Link></li>
                 <li><Link to="/Reports" className="active link-button">Reports</Link></li>
+                <li><Link to="/AssignTrip" className="link-button">Assign Trip</Link></li>
                 <li><Link to="/" className="link-button">Dashboard</Link></li>
                 <li onClick={logout}><Link className="logout-button">Logout</Link></li>
             </div>
@@ -242,7 +316,24 @@ function Reports() {
 
                     </div>
                 </form>
-                <table class="table">
+                {selectedReport === 6 ?
+                    <span>
+                        <span id={4} onClick={statusFilter} style={{ backgroundColor: "grey", borderRadius: "3px", color: "white", padding: "3px", cursor: "pointer" }}>ALL</span>
+                        <span id={0} onClick={statusFilter} style={{ backgroundColor: "black", borderRadius: "3px", color: "white", padding: "3px", cursor: "pointer", marginLeft: "10px" }}>CREATED</span>
+                        <span id={1} onClick={statusFilter} style={{ backgroundColor: "#FFCC00", borderRadius: "3px", color: "white", padding: "3px", cursor: "pointer", marginLeft: "10px" }}>ACCEPTED</span>
+                        <span id={2} onClick={statusFilter} style={{ backgroundColor: "orange", borderRadius: "3px", color: "white", padding: "3px", cursor: "pointer", marginLeft: "10px" }}>STARTED</span>
+                        <span id={3} onClick={statusFilter} style={{ backgroundColor: "green", borderRadius: "3px", color: "white", padding: "3px", cursor: "pointer", marginLeft: "10px" }}>ENDED</span>
+                        <span id={-1} onClick={statusFilter} style={{ backgroundColor: "red", borderRadius: "3px", color: "white", padding: "3px", cursor: "pointer", marginLeft: "10px" }}>DECLINED</span> </span> : null}
+
+                <div style={{ float: "right", marginBottom: "5px" }}>
+                    <ReactHTMLTableToExcel
+                        className="btn btn-info"
+                        table={selectedReport === 6 ? "emp1" : "emp"}
+                        filename={`${selectedReportName} ${fromDate} ${selectedReportName}`}
+                        sheet="Sheet"
+                        buttonText="Export to Excel" />
+                </div>
+                <table class="table" id="emp">
                     <thead class="thead-dark">
                         <tr>
                             {tableHeader}
@@ -250,6 +341,16 @@ function Reports() {
                     </thead>
                     <tbody>
                         {rows}
+                    </tbody>
+                </table>
+                <table class="table" id="emp1" style={{ visibility: "hidden" }} >
+                    <thead class="thead-dark">
+                        <tr>
+                            {tableHeader}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {excelRows}
                     </tbody>
                 </table>
             </div>
